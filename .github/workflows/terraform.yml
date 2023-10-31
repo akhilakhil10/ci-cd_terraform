@@ -20,10 +20,11 @@ jobs:
 
       - name: Prepare variables for Terraform
         run: |
-          echo "GCS_KEY_BASE64=${{ secrets.GCS_KEY }}" >> $GITHUB_ENV
+            echo "GCS_KEY_BASE64=${{ secrets.GCS_KEY }}" >> $GITHUB_ENV
         shell: bash
         env:
           GCS_KEY_BASE64: ${{ env.GCS_KEY_BASE64 }}
+
          
       - name: Apply Terraform
         run: |
