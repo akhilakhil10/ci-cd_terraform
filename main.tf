@@ -1,5 +1,5 @@
 provider "google" {
-  credentials = file("C:/Users/medap/Desktop/terraform/dev-project-403711-5c595bb51180.json")
+  credentials = file("./dev-project-403711-5c595bb51180.json")
   project     = "dev-project-403711"
 }
 
