@@ -17,14 +17,13 @@ jobs:
         uses: hashicorp/setup-terraform@v1
         with:
           terraform_version: 1.1.0
-      
+
       - name: Prepare variables for Terraform
         run: |
-          echo "GCS_KEY_BASE64=\${{ secrets.GCS_KEY }}" >> $GITHUB_ENV
+          echo "GCS_KEY_BASE64=${{ secrets.GCS_KEY }}" >> $GITHUB_ENV
         shell: bash
-
-       env:
-         GCS_KEY_BASE64: ${{ env.GCS_KEY_BASE64 }}
+        env:
+          GCS_KEY_BASE64: ${{ env.GCS_KEY_BASE64 }}
          
       - name: Apply Terraform
         run: |
@@ -41,4 +40,3 @@ jobs:
       - name: Clean up
         run: |
           terraform destroy -auto-approve
-     
