@@ -5,10 +5,10 @@ provider "google" {
 
 resource "null_resource" "copy_files" {
   triggers = {
-    files = "${path.module}./dbt_project/*"
+    files = "${path.module}/./dbt_project/*"
   }
 
   provisioner "local-exec" {
-    command = "gsutil -m cp -r ${path.module}./dbt_project/* gs://terraformbuckettest/dags/"
+    command = "gsutil -m cp -r ${path.module}/./dbt_project/* gs://terraformbuckettest/dags/"
   }
 }
