@@ -1,7 +1,15 @@
 provider "google" {
-  credentials = file("./dev-project-403711-5c595bb51180.json")
+  credentials = jsondecode(base64decode(var.gcs_key_base64))
   project     = "dev-project-403711"
+  region      = "us-central1"
 }
+
+
+variable "gcs_key_base64" {
+  description = "Base64-encoded Google Cloud service account key"
+  type        = string
+}
+
 
 resource "null_resource" "copy_files" {
   triggers = {
