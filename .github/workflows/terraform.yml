@@ -22,11 +22,15 @@ jobs:
         run: |
           terraform init
           terraform apply -auto-approve
-        env:
-          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GCP_KEY }}
+          
+      - uses: google-github-actions/setup-gcloud@v0
+        with:
+          service_account_email: ${{secrets.GCP_EMAIL}}
+          service_account_key: ${{secrets.GCP_KEY}}
+          project_id: dev-project-403711 
+        
 
       - name: Clean up
         run: |
           terraform destroy -auto-approve
-        env:
-          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GCP_KEY }}
+     
